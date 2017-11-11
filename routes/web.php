@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/test_password/{nim}', 'RandPasswordController@get_random_password');
