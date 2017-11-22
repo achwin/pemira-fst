@@ -1,0 +1,49 @@
+@import "step";
+.bdy-lgn{
+	background-image: url(../images/background.jpeg);
+}
+.bg-c{
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+header#primary-header{
+	background: url('../images/olimpiade.jpg') no-repeat center center fixed;
+	height: 350px;
+	background-size: cover;
+	color: #fff;
+	padding-top: 150px;
+}
+
+.auth-box{
+	width: 400px;
+    background-color: rgba(255,255,255,0.98);
+    padding: 40px 20px 10px;
+    border-radius: 10px;
+}
+
+.ctr-absol{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.form-control-label {
+    padding: 0px 20px;
+    margin-bottom: 0;
+}
+
+.text-center{
+	text-align: center;
+}
+
+.step{
+	margin-bottom: 50px;
+}
+footer{
+	margin-top: 100px;
+	color: #BDBDBD;
+}
