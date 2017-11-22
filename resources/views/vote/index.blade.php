@@ -67,7 +67,7 @@
         <fieldset>
             <div class="col-md-6">
                 <label>
-                    <img src="https://siakad.unesa.ac.id/images/fotomhs/14020084087.jpg">
+                    <img src="https://cybercampus.unair.ac.id/foto_mhs/081411631005.JPG">
                     <input id="radioBtn" type="radio" name="optradio1" onclick="test(this)">
                     <p>Pilih</p>
                 </label>
@@ -75,7 +75,7 @@
             <div class="col-md-6">
                 <div class="col-md-3">
                     <label>
-                        <img src="https://siakad.unesa.ac.id/images/fotomhs/14020084087.jpg" width="125">
+                        <img src="https://cybercampus.unair.ac.id/foto_mhs/081411631006.JPG" width="125">
                         <input id="radioBtn" type="radio" name="optradio1" onclick="test(this)"/ style="margin-left: 45px;">
                         <p style="margin-left: 35px;">Pilih</p>
                     </label>
