@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\DB;
 
 class VoteController extends Controller{
 
@@ -13,7 +14,17 @@ class VoteController extends Controller{
         $this->middleware('auth');
     }
 
-    public function index(){                
-        return view('vote.index');
+    public function index(){
+
+    	$himaki = DB::table('paslon')->where('prodi_paslon',3)->get();
+
+    	//dd($himaki);
+
+        return view('vote.index',
+        	[
+        		'himaki'=>$himaki
+        	]
+
+        	);
     }
 }

@@ -28,7 +28,76 @@
     <h3>HIMAKI</h3>
     <section>
         <h3>Silahkan Pilih Ketua dan Wakil Ketua Himaki</h3>
-        <p>The next and previous buttons help you to navigate through your content.</p>
+
+        <?php
+
+            $dataObs = array();
+
+            foreach ($himaki as $item) {
+                # code...
+                $isExist = true;
+
+                if(!in_array($item->nim_paslon,$dataObs)){
+                    array_push($dataObs,$item->nim_paslon);
+                    //echo $item->nim_paslon." ";
+                    $isExist = false;
+                }
+
+
+                if(!$isExist){
+                     foreach ($himaki as $item2) {
+                    # code...
+
+
+                    if($item->nim_paslon!=$item2->nim_paslon&&$item->pasangan_nomor==$item2->pasangan_nomor){
+                        //echo $item2->nim_paslon."<br>";
+
+                        if(!in_array($item2->nim_paslon,$dataObs)){
+                            array_push($dataObs,$item2->nim_paslon);
+                        }
+
+                        //array_push($dataObs,$item2->nim_paslon);
+
+                        echo '<fieldset>';
+
+                            echo '<div class="col-md-6"';
+
+                                echo '<label>';
+
+                                    echo '<img src="'.$item->url_foto.'" width="125">';
+                                    echo '<input id="radioBtn" type="radio" name="optradio1" onclick="test(this)"/ style="margin-left: 45px;">';
+                                    echo '<p>Pilih</p>';
+
+                                echo '</label>';
+
+                            echo '</div>';
+
+                            echo '<div class="col-md-6"';
+
+                                echo '<label>';
+
+                                    echo '<img src="'.$item2->url_foto.'" width="125">';
+                                    echo '<input id="radioBtn" type="radio" name="optradio1" onclick="test(this)"/ style="margin-left: 45px;">';
+                                    echo '<p>Pilih</p>';
+
+                                echo '</label>';
+
+                            echo '</div>';
+
+                        echo '</fieldset>';
+
+                        break;
+                    }
+                }
+                }
+                
+
+               
+            }
+        ?>
+
+    
+
     </section>
     <h3>BLM Angkatan 2015</h3>
     <section>
