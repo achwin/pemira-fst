@@ -57,6 +57,8 @@ class LoginController extends Controller
             if (Auth::attempt($credentials, $request->has('remember')))
             {
                 Auth::login($user,true);
+
+
                 return redirect::to('/');
             }
         }

@@ -19,11 +19,19 @@ Route::get('/login', [
 Route::post('/login', [
 	'as'   => 'loginAction',
 	'uses' => 'Auth\LoginController@loginAction']);
+Route::get('/register', [
+	'as'   => 'register',
+	'uses' => 'Auth\RegisterController@showRegisterForm']);
+Route::post('/register', [
+	'as'   => 'registeraction',
+	'uses' => 'Auth\RegisterController@createUser']);
 });
+
 Route::group(['middleware' => ['auth']], function () {
 	Route::get('/', [
 		'as'   => 'index.vote',
 		'uses' => 'VoteController@index']);
+
 	Route::get('/logout', [
 		'as'   => 'logout',
 		'uses' => 'Auth\LoginController@logout']);
