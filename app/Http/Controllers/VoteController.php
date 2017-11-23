@@ -16,13 +16,36 @@ class VoteController extends Controller{
 
     public function index(){
 
-    	$himaki = DB::table('paslon')->where('prodi_paslon',3)->get();
+    	$himaki = DB::table('paslon')->where('prodi_paslon',3)
+    								->where('kategori_pemilihan_fk',3)
+    								->get();
+
+    	$blm_2015 = DB::table('paslon')->where('angkatan_paslon',4)
+    								   ->where('kategori_pemilihan_fk',2)
+    								   ->get();
+
+    	$blm_2016 = DB::table('paslon')->where('angkatan_paslon',5)
+    								   ->where('kategori_pemilihan_fk',2)
+    								   ->get();
+
+		$blm_2017 = DB::table('paslon')->where('angkatan_paslon',6)
+    								   ->where('kategori_pemilihan_fk',2)
+    								   ->get();  
+
+    	$bem = DB::table('paslon')->where('kategori_pemilihan_fk',1)->get();  
+
+    	$dlm = DB::table('paslon')->where('kategori_pemilihan_fk',4)->get();								   
 
     	//dd($himaki);
 
         return view('vote.index',
         	[
-        		'himaki'=>$himaki
+        		'himaki'=>$himaki,
+        		'blm_2015'=>$blm_2015,
+        		'blm_2016'=>$blm_2016,
+        		'blm_2017'=>$blm_2017,
+        		'bem'=>$bem,
+        		'dlm'=>$dlm
         	]
 
         	);
