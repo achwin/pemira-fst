@@ -94,11 +94,8 @@
                 </form>
             </div>
 
-            <div class="col-lg-7 col-lg-offset-1" style="padding: 10px 30px">
-                <img src="https://pbs.twimg.com/profile_images/598864237641924608/XOzEwMj9.png" alt="" style="margin-top:80px; width:30%"; >
-            </div>
-            <div class="col-lg-7 col-lg-offset-1" style="padding: 10px 30px">
-                <img src="https://pbs.twimg.com/profile_images/684905074569560064/S--alEqM.jpg" alt="" style="margin-top:80px; width:30%"; >
+            <div class="col-lg-7">
+                <img src="http://kimia.fst.unair.ac.id/wp-content/uploads/2017/04/cover-e1491976042604.jpg" alt="" style="margin-top:120px; height: 500px; width: 800px;">
             </div>
         </div>
     </div>
@@ -109,7 +106,7 @@
 </div>
 
 <div id="contact-person" style="z-index: 1000; display:none; position: fixed; bottom: 0; right: 50px; padding: 10px; text-align: center;background-color: #5bc0de;">
-   <label style="color: #ffffff;">M.Hilmi Achwin (Line : falachudin)</label><a onclick="slideContact();" style="margin-left:10px; color:#ffffff;" href="#"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+   <label style="color: #ffffff;">Hilmi (WA : 083830557123 / Line : falachudin)</label><a onclick="slideContact();" style="margin-left:10px; color:#ffffff;" href="#"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
 </div>
 
 <script type="text/javascript">

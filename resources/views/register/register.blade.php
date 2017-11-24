@@ -54,7 +54,7 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <header class="page-header" style="padding-top: 100px;">
                         <h2>
-                            Register Pemilih Pemira FST Tahun 2017
+                            Register Pemira FST Tahun 2017
                         </h2>
                         <br>
                     </header>
@@ -63,7 +63,7 @@
                         @if(session()->has('password_user'))
                         <div class="alert alert-success">
                         Username :  {{ session()->get('nim_user') }} <br>
-                        Password :   {{ session()->get('password_user') }}
+                        Password  :   {{ session()->get('password_user') }}
                        
                         </div>
                         @endif
@@ -95,24 +95,22 @@
                     </div>
 
                     <div class="form-group">
-                        <select class="from-control form-control-lg" id="prodi_user" name="prodi_user">
-                            <option disabled selected value>Pilih Prodi Mahasiswa</option>
-                             @foreach($program_studi as $item)
+                        <select class="from-control form-control-lg" id="prodi_user" name="prodi_user" style="width: 320px;" required>
+                            <option disabled selected value>Pilih Prodi</option>
+                            @foreach($program_studi as $item)
                             <option value="{{$item->id_program_studi}}">{{$item->nama_program_studi}}</option>
                             @endforeach
                         </select>  
                     </div>
 
                      <div class="form-group">
-                        <select class="from-control form-control-lg" id="angkatan_user" name="angkatan_user">
-                            <option disabled selected value>Pilih Angkatan Mahasiswa </option>
+                        <select class="from-control form-control-lg" id="angkatan_user" name="angkatan_user" style="width: 320px;" required>
+                            <option disabled selected value>Pilih Angkatan</option>
                              @foreach($angkatan as $item)
                             <option value="{{$item->id_angkatan}}">{{$item->tahun_angkatan}}</option>
                             @endforeach
                         </select>  
                     </div>
-
-                  
 
                     <div class="form-group text-center">
                         <button type="submit" class="btn btn-info-outline btn-lg btn-block">
@@ -120,13 +118,11 @@
                         </button>
                     </div>
                 </form>
+                <a href="{{url('logout')}}" class="btn btn-danger-outline btn-lg btn-block">Logout</a>
             </div>
 
-            <div class="col-lg-7 col-lg-offset-1" style="padding: 10px 30px">
-                <img src="https://pbs.twimg.com/profile_images/598864237641924608/XOzEwMj9.png" alt="" style="margin-top:80px; width:30%"; >
-            </div>
-            <div class="col-lg-7 col-lg-offset-1" style="padding: 10px 30px">
-                <img src="https://pbs.twimg.com/profile_images/684905074569560064/S--alEqM.jpg" alt="" style="margin-top:80px; width:30%"; >
+            <div class="col-lg-7">
+                <img src="http://kimia.fst.unair.ac.id/wp-content/uploads/2017/04/cover-e1491976042604.jpg" alt="" style="margin-top:120px; height: 500px; width: 800px;">
             </div>
         </div>
     </div>
@@ -137,7 +133,7 @@
 </div>
 
 <div id="contact-person" style="z-index: 1000; display:none; position: fixed; bottom: 0; right: 50px; padding: 10px; text-align: center;background-color: #5bc0de;">
-   <label style="color: #ffffff;">M.Hilmi Achwin (Line : falachudin)</label><a onclick="slideContact();" style="margin-left:10px; color:#ffffff;" href="#"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+   <label style="color: #ffffff;">Hilmi (WA : 083830557123 / Line : falachudin)</label><a onclick="slideContact();" style="margin-left:10px; color:#ffffff;" href="#"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
 </div>
 
 <script type="text/javascript">

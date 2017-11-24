@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Redirect;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -40,12 +42,16 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
 
     public function showRegisterForm()
     {
         # code...
+        if (Auth::user()->is_admin != 1) {
+          Auth::logout();
+          return redirect::to('/');
+        }
         $angkatan = Angkatan::all();
         $program_studi = ProgramStudi::all();
 

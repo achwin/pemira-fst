@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Auth;
 
 class VoteController extends Controller{
@@ -13,7 +14,10 @@ class VoteController extends Controller{
         $this->middleware('auth');
     }
 
-    public function index(){                
-        return view('vote.index');
+    public function index(){
+       if (Auth::user()->is_admin == 1) {
+            return redirect::to('/register');
+        }           
+      return view('vote.index');
     }
 }
