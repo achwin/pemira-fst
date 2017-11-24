@@ -25,6 +25,9 @@ Route::get('/register', [
 Route::post('/register', [
 	'as'   => 'registeraction',
 	'uses' => 'Auth\RegisterController@createUser']);
+
+
+
 });
 
 Route::group(['middleware' => ['auth']], function () {
@@ -35,4 +38,8 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/logout', [
 		'as'   => 'logout',
 		'uses' => 'Auth\LoginController@logout']);
+
+	Route::post('/vote', [
+	'as'   => 'voteaction',
+	'uses' => 'VoteController@vote']);
 });
