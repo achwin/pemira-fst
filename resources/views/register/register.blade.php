@@ -61,7 +61,7 @@
 
                     <div class="flash-message">
                         @if(session()->has('password_user'))
-                        <div class="alert alert-success">
+                        <div class="alert alert-info">
                         Username :  {{ session()->get('nim_user') }} <br>
                         Password  :   {{ session()->get('password_user') }}
                        

@@ -8,6 +8,7 @@ use Auth;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use App\User;
+use App\Pemilihan;
 use Illuminate\Support\Facades\Redirect;
 use Session;
 
@@ -57,9 +58,15 @@ class LoginController extends Controller
             if (Auth::attempt($credentials, $request->has('remember')))
             {
                 Auth::login($user,true);
-
-
-                return redirect::to('/');
+                $check = Pemilihan::where('id_pemilih',Auth::user()->id_user)->first();
+                if (is_null($check)) {
+                    return redirect::to('/');
+                }
+                else
+                    Auth::logout();
+                    Session::flash('alert-warning', 'NIM ini telah mengikuti Pemira');
+                    return redirect()->back()->withInput();
+                
             }
         }
         Session::flash('alert-danger', 'NIM atau password anda salah');

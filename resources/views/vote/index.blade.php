@@ -28,43 +28,128 @@
     <h3>HIMAKI</h3>
     <section>
         <h3>Silahkan Pilih Ketua dan Wakil Ketua Himaki</h3>
-        <p>The next and previous buttons help you to navigate through your content.</p>
+
+        <div class="row">
+
+        <?php
+
+            $dataObs = array();
+
+            foreach ($himaki as $item) {
+                # code...
+                $isExist = true;
+
+                //print_r($dataObs);
+
+                //echo "<br>";
+
+                if(!in_array($item->nim_paslon,$dataObs)){
+                    array_push($dataObs,$item->nim_paslon);
+                    //echo $item->nim_paslon." ";
+                    //echo "test";
+                    $isExist = false;
+                }
+
+
+                if(!$isExist){
+                     foreach ($himaki as $item2) {
+                    # code...
+
+
+                    if($item->nim_paslon!=$item2->nim_paslon&&$item->pasangan_nomor==$item2->pasangan_nomor){
+                        //echo $item2->nim_paslon."<br>";
+
+                        if(!in_array($item2->nim_paslon,$dataObs)){
+                            array_push($dataObs,$item2->nim_paslon);
+                        }
+
+                        array_push($dataObs,$item2->nim_paslon);
+
+                        echo '<fieldset>';
+
+                            echo '<div class="col-md-6"';
+
+                                echo "<p> Pasangan Nomor ".$item->pasangan_nomor."</p>";
+
+                                echo '<label>';
+
+                                    echo '<img src="'.$item->url_foto.'" width="125">';
+                                    echo '<input id="radioBtn" type="radio" name="optradio1" onclick="test(this)"/ style="margin-left: 45px;">';
+                                    echo '<p>Pilih</p>';
+
+
+
+
+                                echo '</label>';
+
+                                  echo '<label>';
+
+                                    echo '<img src="'.$item2->url_foto.'" width="125">';
+                                    echo '<input id="radioBtn" type="radio" name="optradio1" onclick="test(this)"/ style="margin-left: 45px;">';
+                                    echo '<p>Pilih</p>';
+
+                                echo '</label>';
+
+                            echo '</div>';
+
+                            echo '<div class="col-md-6"';
+
+                                
+                            echo '</div>';
+
+                        echo '</fieldset>';
+
+                        break;
+                    }
+                }
+                }
+                
+
+               
+            }
+        ?>
+
+        </div>
+
     </section>
     <h3>BLM Angkatan 2015</h3>
     <section>
         <h3 style="text-align: center; margin-bottom: 50px;" >Silahkan pilih BLM Angkatan 2015</h3>
         <div class="row">
-            <fieldset>
-                <div class="col-md-6">
-                    <div class="col-md-3">
-                        <label>
-                            <img src="https://cybercampus.unair.ac.id/foto_mhs/081411631002.JPG" width="125">
-                            <input id="radioBtn" type="radio" name="" onclick="test(this)"/ style="margin-left: 50px; margin-top: 5px;">
-                            <p style="margin-left: 40px;">Pilih</p>
-                        </label>
-                    </div>
-                    <div class="col-md-6">
-                        <p>Nama : Dhanang</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="col-md-3">
-                        <label>
-                            <img src="https://cybercampus.unair.ac.id/foto_mhs/081411631004.JPG" width="125">
-                            <input id="radioBtn" type="radio" name="optradio" onclick="test(this)"/ style="margin-left: 50px; margin-top: 5px;">
-                            <p style="margin-left: 40px;">Pilih</p>
-                        </label>
-                    </div>  
-                    <div class="col-md-6">
-                        <p>Nama : Okik</p>
-                    </div>
-                </div>
-            </fieldset>
+           <?php
+
+           
+             echo '<fieldset>';
+            foreach ($blm_2015 as $item) {
+                
+                # code...
+                
+
+                            echo '<div class="col-md-6"';
+
+                                echo '<label>';
+
+                                    echo '<img src="'.$item->url_foto.'" width="125">';
+                                    echo '<input id="radioBtn" type="radio" name="optradio1" onclick="test(this)"/ style="margin-left: 45px;">';
+                                    echo '<p>Pilih</p>';
+
+                                echo '</label>';
+
+                            echo '</div>';
+
+                           
+
+                        
+                
+            }
+            echo '</fieldset>';
+
+        ?>
         </div>
     </section>
     <h3>BLM Angkatan 2016</h3>
     <section>
-        <fieldset>
+       <!--  <fieldset>
             <div class="col-md-6">
                 <label>
                     <img src="https://cybercampus.unair.ac.id/foto_mhs/081411631005.JPG">
@@ -84,19 +169,186 @@
                     <p></p>
                 </div>
             </div>
-        </fieldset>
+        </fieldset> -->
+        <div class="row">
+           <?php
+
+           
+             echo '<fieldset>';
+            foreach ($blm_2016 as $item) {
+                
+                # code...
+                
+
+                            echo '<div class="col-md-6"';
+
+                                echo '<label>';
+
+                                    echo '<img src="'.$item->url_foto.'" width="125">';
+                                    echo '<input id="radioBtn" type="radio" name="optradio1" onclick="test(this)"/ style="margin-left: 45px;">';
+                                    echo '<p>Pilih</p>';
+
+                                echo '</label>';
+
+                            echo '</div>';
+
+                           
+
+                        
+                
+            }
+            echo '</fieldset>';
+
+        ?>
+        </div>
     </section>
     <h3>BLM Angkatan 2017</h3>
     <section>
-        <p>The next and previous buttons help you to navigate through your content.</p>
+           <div class="row">
+           <?php
+
+           
+             echo '<fieldset>';
+            foreach ($blm_2017 as $item) {
+                
+                # code...
+                
+
+                            echo '<div class="col-md-6"';
+
+                                echo '<label>';
+
+                                    echo '<img src="'.$item->url_foto.'" width="125">';
+                                    echo '<input id="radioBtn" type="radio" name="optradio1" onclick="test(this)"/ style="margin-left: 45px;">';
+                                    echo '<p>Pilih</p>';
+
+                                echo '</label>';
+
+                            echo '</div>';
+
+                           
+
+                        
+                
+            }
+            echo '</fieldset>';
+
+        ?>
+        </div>
     </section>
     <h3>BEM</h3>
     <section>
-        <p>The next and previous buttons help you to navigate through your content.</p>
+         <div class="row">
+
+        <?php
+
+            $dataObs = array();
+
+            foreach ($bem as $item) {
+                # code...
+                $isExist = true;
+
+                //print_r($dataObs);
+
+                //echo "<br>";
+
+                if(!in_array($item->nim_paslon,$dataObs)){
+                    array_push($dataObs,$item->nim_paslon);
+                    //echo $item->nim_paslon." ";
+                    //echo "test";
+                    $isExist = false;
+                }
+
+
+                if(!$isExist){
+                     foreach ($bem as $item2) {
+                    # code...
+
+
+                    if($item->nim_paslon!=$item2->nim_paslon&&$item->pasangan_nomor==$item2->pasangan_nomor){
+                        //echo $item2->nim_paslon."<br>";
+
+                        if(!in_array($item2->nim_paslon,$dataObs)){
+                            array_push($dataObs,$item2->nim_paslon);
+                        }
+
+                        array_push($dataObs,$item2->nim_paslon);
+
+                        echo '<fieldset>';
+
+                            echo '<div class="col-md-6"';
+
+                                echo "<p> Pasangan Nomor ".$item->pasangan_nomor."</p>";
+
+                                echo '<label>';
+
+                                    echo '<img src="'.$item->url_foto.'" width="125">';
+                                    echo '<input id="radioBtn" type="radio" name="optradio1" onclick="test(this)"/ style="margin-left: 45px;">';
+                                    echo '<p>Pilih</p>';
+
+
+
+
+                                echo '</label>';
+
+                                  echo '<label>';
+
+                                    echo '<img src="'.$item2->url_foto.'" width="125">';
+                                    echo '<input id="radioBtn" type="radio" name="optradio1" onclick="test(this)"/ style="margin-left: 45px;">';
+                                    echo '<p>Pilih</p>';
+
+                                echo '</label>';
+
+                            echo '</div>';
+
+                            echo '<div class="col-md-6"';
+
+                                
+                            echo '</div>';
+
+                        echo '</fieldset>';
+
+                        break;
+                    }
+                }
+                }
+                
+
+               
+            }
+        ?>
+
+
+        </div>
     </section>
     <h3>DLM</h3>
     <section>
-        <p>The next and previous buttons help you to navigate through your content.</p>
+       <?php 
+     echo '<fieldset>';
+            foreach ($dlm as $item) {
+                
+                # code...
+                
+
+                            echo '<div class="col-md-6"';
+
+                                echo '<label>';
+
+                                    echo '<img src="'.$item->url_foto.'" width="125">';
+                                    echo '<input id="radioBtn" type="radio" name="optradio1" onclick="test(this)"/ style="margin-left: 45px;">';
+                                    echo '<p>Pilih</p>';
+
+                                echo '</label>';
+
+                            echo '</div>';
+
+                           
+
+                        
+                
+            }
+            echo '</fieldset>';
+       ?>
     </section>
 </form>
 </div>
