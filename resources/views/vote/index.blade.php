@@ -23,7 +23,7 @@
     </style>
 </head>
 <div class="container" style="margin-top: 20px;">
-   <form id="example-basic" method="post" class="form-horizontal" action="{!!url('')!!}" >       
+   <form id="example-basic" method="post" class="form-horizontal" action="{{ url('/vote') }}" >       
     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
     <h3>HIMAKI</h3>
     <section>
@@ -74,7 +74,11 @@
                                 echo '<label>';
 
                                     echo '<img src="'.$item->url_foto.'" width="125">';
-                                    echo '<input id="radioBtn" type="radio" name="optradio1" onclick="test(this)"/ style="margin-left: 45px;">';
+                                    echo '<input id="radioBtn" type="radio" class="himaki" name="optradio1"';
+                                    echo 'value="'.$item->nim_paslon.'"';
+                                    echo 'onclick="test(this)"/ style="margin-left: 45px;">';
+
+                                    // echo '<input id="radioBtn" type="radio" class="himaki" name="optradio1" onclick="test(this)"/ style="margin-left: 45px;">';
                                     echo '<p>Pilih</p>';
 
 
@@ -85,8 +89,13 @@
                                   echo '<label>';
 
                                     echo '<img src="'.$item2->url_foto.'" width="125">';
-                                    echo '<input id="radioBtn" type="radio" name="optradio1" onclick="test(this)"/ style="margin-left: 45px;">';
+                                    echo '<input id="radioBtn" type="radio" class="himaki" name="optradio1"';
+                                    echo 'value="'.$item2->nim_paslon.'"';
+                                    echo 'onclick="test(this)"/ style="margin-left: 45px;">';
+
+                                    // echo '<input id="radioBtn" type="radio" class="himaki" name="optradio1" onclick="test(this)"/ style="margin-left: 45px;">';
                                     echo '<p>Pilih</p>';
+
 
                                 echo '</label>';
 
@@ -120,6 +129,7 @@
 
            
              echo '<fieldset>';
+             $i = 1;
             foreach ($blm_2015 as $item) {
                 
                 # code...
@@ -128,7 +138,7 @@
                             echo '<div class="col-md-6"';
 
                                 echo '<label>';
-
+                                    echo "<p> Calon Nomor ".$i."</p>";
                                     echo '<img src="'.$item->url_foto.'" width="125">';
                                     echo '<input id="radioBtn" type="radio" name="optradio1" onclick="test(this)"/ style="margin-left: 45px;">';
                                     echo '<p>Pilih</p>';
@@ -138,7 +148,7 @@
                             echo '</div>';
 
                            
-
+                            $i++;
                         
                 
             }
@@ -149,32 +159,13 @@
     </section>
     <h3>BLM Angkatan 2016</h3>
     <section>
-       <!--  <fieldset>
-            <div class="col-md-6">
-                <label>
-                    <img src="https://cybercampus.unair.ac.id/foto_mhs/081411631005.JPG">
-                    <input id="radioBtn" type="radio" name="optradio1" onclick="test(this)">
-                    <p>Pilih</p>
-                </label>
-            </div>
-            <div class="col-md-6">
-                <div class="col-md-3">
-                    <label>
-                        <img src="https://cybercampus.unair.ac.id/foto_mhs/081411631006.JPG" width="125">
-                        <input id="radioBtn" type="radio" name="optradio1" onclick="test(this)"/ style="margin-left: 45px;">
-                        <p style="margin-left: 35px;">Pilih</p>
-                    </label>
-                </div>  
-                <div class="col-md-3">
-                    <p></p>
-                </div>
-            </div>
-        </fieldset> -->
+      
         <div class="row">
            <?php
 
            
              echo '<fieldset>';
+              $i = 1;
             foreach ($blm_2016 as $item) {
                 
                 # code...
@@ -183,7 +174,7 @@
                             echo '<div class="col-md-6"';
 
                                 echo '<label>';
-
+                                    echo "<p> Calon Nomor ".$i."</p>";
                                     echo '<img src="'.$item->url_foto.'" width="125">';
                                     echo '<input id="radioBtn" type="radio" name="optradio1" onclick="test(this)"/ style="margin-left: 45px;">';
                                     echo '<p>Pilih</p>';
@@ -193,7 +184,7 @@
                             echo '</div>';
 
                            
-
+                            $i++;
                         
                 
             }
@@ -209,6 +200,7 @@
 
            
              echo '<fieldset>';
+             $i =  1;
             foreach ($blm_2017 as $item) {
                 
                 # code...
@@ -217,7 +209,7 @@
                             echo '<div class="col-md-6"';
 
                                 echo '<label>';
-
+                                echo "<p> Calon Nomor ".$i."</p>";
                                     echo '<img src="'.$item->url_foto.'" width="125">';
                                     echo '<input id="radioBtn" type="radio" name="optradio1" onclick="test(this)"/ style="margin-left: 45px;">';
                                     echo '<p>Pilih</p>';
@@ -229,7 +221,7 @@
                            
 
                         
-                
+                $i++;
             }
             echo '</fieldset>';
 
@@ -325,6 +317,7 @@
     <section>
        <?php 
      echo '<fieldset>';
+     $i=1;
             foreach ($dlm as $item) {
                 
                 # code...
@@ -333,9 +326,9 @@
                             echo '<div class="col-md-6"';
 
                                 echo '<label>';
-
+echo "<p> Calon Nomor ".$i."</p>";
                                     echo '<img src="'.$item->url_foto.'" width="125">';
-                                    echo '<input id="radioBtn" type="radio" name="optradio1" onclick="test(this)"/ style="margin-left: 45px;">';
+                                    echo '<input id="radioBtn" type="radio" class="radio_btn" name="optradio1" onclick="test(this)"/ value="1" style="margin-left: 45px;">';
                                     echo '<p>Pilih</p>';
 
                                 echo '</label>';
@@ -344,7 +337,7 @@
 
                            
 
-                        
+                        $i++; 
                 
             }
             echo '</fieldset>';
@@ -358,7 +351,25 @@
         bodyTag: "section",
         enableAllSteps: true,
         transitionEffect: "slideLeft",
-        autoFocus: true
+        autoFocus: true,
+
+
+onFinished: function (event, currentIndex)
+        {
+
+           //  $test = $('#radioBtn.himaki').val();
+
+           // //$test = $('input[#radioBtn.himaki]:checked', '#example-basic');
+           //  //$test = $("input[id=radioBtn].himaki:checked").val();
+           //  console.log($test);
+
+             var form = $(this);
+
+            // // Submit form input
+
+             form.submit();
+        }
+
     });
 </script>
 <script>

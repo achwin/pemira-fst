@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
 use Illuminate\Support\Facades\DB;
+use App\Pemilihan;
 
 class VoteController extends Controller{
 
@@ -53,5 +54,37 @@ class VoteController extends Controller{
         		'dlm'=>$dlm
         	]
         	);
+    }
+
+    public function vote(Request $request)
+    {
+    	# code...
+    	$id_pemilih = Auth::user()->id_user;
+
+        $arr_id_calon = array(
+            4,6,8,10,13
+            ); 
+
+        $is_valid = 1;
+
+        $data = array();
+
+        for($i=0;$i<count($arr_id_calon);$i++){
+            $tmp = array(
+                'id_pemilih'=>$id_pemilih,
+                'id_calon'=>$arr_id_calon[$i],
+                'is_valid'=>$is_valid
+                );  
+
+            array_push($data,$tmp);
+        }
+
+
+
+    	DB::table('pemilihan')->insert($data);
+
+        return Redirect::to('/logout');
+
+
     }
 }

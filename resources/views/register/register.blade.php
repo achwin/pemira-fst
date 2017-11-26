@@ -52,6 +52,7 @@
 
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="prodi_user" value="{{Auth::user()->prodi_user}}">
                     <header class="page-header" style="padding-top: 100px;">
                         <h2>
                             Register Pemira FST Tahun 2017
@@ -62,7 +63,7 @@
                     <div class="flash-message">
                         @if(session()->has('password_user'))
                         <div class="alert alert-info">
-                        Username :  {{ session()->get('nim_user') }} <br>
+                        NIM       :  {{ session()->get('nim_user') }} <br>
                         Password  :   {{ session()->get('password_user') }}
                        
                         </div>
@@ -91,16 +92,11 @@
                     @endif
 
                     <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-                        <input type="text" class="form-control form-control-lg" id="nim_user" name="nim_user" placeholder="NIM" required>
+                        <input type="text" class="form-control form-control-lg" id="nim_user" name="nim_user" placeholder="NIM" onkeypress="var key = event.keyCode || event.charCode; return ((key  >= 48 && key  <= 57) || key == 8 || key == 45);" required>
                     </div>
-
+                    
                     <div class="form-group">
-                        <select class="from-control form-control-lg" id="prodi_user" name="prodi_user" style="width: 320px;" required>
-                            <option disabled selected value>Pilih Prodi</option>
-                            @foreach($program_studi as $item)
-                            <option value="{{$item->id_program_studi}}">{{$item->nama_program_studi}}</option>
-                            @endforeach
-                        </select>  
+                        <input type="text" class="form-control form-control-lg" id="prodi_user" value="{{Auth::user()->prodi->nama_program_studi}}" readonly>
                     </div>
 
                      <div class="form-group">

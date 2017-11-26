@@ -16,7 +16,7 @@ class Pemilihan extends Model
      * @var array
      */
     protected $fillable = [
-        
+        'id_pemilihan','id_calon','waktu_pemilihan','is_valid'
     ];
 
     /**

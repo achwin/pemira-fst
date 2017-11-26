@@ -28,4 +28,10 @@ class User extends Authenticatable
     protected $hidden = [
         
     ];
+
+    public function prodi()
+    {
+        return $this->belongsTo('App\ProgramStudi','prodi_user');
+    }
+
 }
