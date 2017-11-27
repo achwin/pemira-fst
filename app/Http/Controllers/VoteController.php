@@ -11,6 +11,9 @@ use App\PemilihanHima;
 use App\PemilihanBem;
 use App\PemilihanDlm;
 use App\PemilihanBlm;
+use App\DetailPemilihanBem;
+use App\DetailPemilihanDlm;
+use App\DetailPemilihanHima;
 use App\User;
 use Validator;
 
@@ -51,10 +54,64 @@ class VoteController extends Controller{
         if ( $v->fails() ) {
             return redirect()->back()->withErrors($v->errors())->withInput();
         }
-    	PemilihanHima::where('id_pemilihan', $request->input('id_pemilihan'))->increment('paslon_hima_suara');
+
+        DB::beginTransaction();
+
+try {
+
+    PemilihanHima::where('id_pemilihan', $request->input('id_pemilihan'))->increment('paslon_hima_suara');
         PemilihanBem::where('id_pemilihan_bem', $request->input('id_pemilihan_bem'))->increment('paslon_bem_suara');
         PemilihanDlm::where('id_pemilihan_dlm', $request->input('id_pemilihan_dlm'))->increment('calon_dlm_suara');
         User::where('id_user',Auth::user()->id_user)->update(['pernah_milih' => 1]);
-        return Redirect::to('/logout');
+
+        $id_user = Auth::user()->id_user;
+
+        $id_bem = $request->input('id_pemilihan_bem');
+
+        $id_dlm = $request->input('id_pemilihan_dlm');
+
+        $id_hima = $request->input('id_pemilihan');
+        //dd($id_hima);
+
+        $detailPemilihanBem = new DetailPemilihanBem;
+        $detailPemilihanDlm = new DetailPemilihanDlm;
+        $detailPemilihanHima = new DetailPemilihanHima;
+
+        $detailPemilihanBem->detail_pemilihan_bem_user = $id_user;
+        $detailPemilihanBem->detail_pemilihan_bem_id_fk = $id_bem;
+
+        $detailPemilihanDlm->detail_pemilihan_dlm_user = $id_user;
+        $detailPemilihanDlm->detail_pemilihan_dlm_id_fk = $id_dlm;
+
+        $detailPemilihanHima->detail_pemilihan_hima_user = $id_user;
+        $detailPemilihanHima->detail_pemilihan_hima_id_fk = $id_hima;
+
+        
+       
+
+        if(isset($id_bem)){
+            $detailPemilihanBem->save();
+        }
+
+        if(isset($id_hima)){
+            $detailPemilihanHima->save();
+        }
+        
+        if(isset($id_dlm)){
+             $detailPemilihanDlm->save();
+        }
+
+
+       
+
+    DB::commit();
+     return Redirect::to('/logout');
+    // all good
+} catch (\Exception $e) {
+    DB::rollback();
+    // something went wrong
+}
+
+    	
     }
 }

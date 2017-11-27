@@ -59,11 +59,10 @@ class CleanDbController extends Controller
       DB::table('pemilihan_bem')
             ->update(['paslon_bem_suara' => 0]);
 
-      DB::table('pemilihan_blm')
-            ->update(['calon_blm_suara' => 0]);
+      DB::table('pemilihan_dlm')
+            ->update(['calon_dlm_suara' => 0]);
 
-      // DB::table('pemilihan_dlm')
-      //       ->update(['calon_dlm_suara' => 0]);
+    
 
       DB::table('pemilihan_hima')
             ->update(['paslon_hima_suara' => 0]);
