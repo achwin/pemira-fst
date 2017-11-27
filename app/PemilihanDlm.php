@@ -4,19 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pemilihan extends Model
+class PemilihanDlm extends Model
 {
     
 
-    protected $primaryKey = 'id_pemilihan';
-    protected $table = 'pemilihan';
+    protected $primaryKey = 'id_pemilihan_dlm';
+    protected $table = 'pemilihan_dlm';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'id_pemilihan','id_calon','waktu_pemilihan','is_valid'
+        'calon_dlm_suara'
     ];
 
     /**

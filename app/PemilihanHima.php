@@ -4,19 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProgramStudi extends Model
+class PemilihanHima extends Model
 {
     
 
-    protected $primaryKey = 'id_program_studi';
-    protected $table = 'program_studi';
+    protected $primaryKey = 'id_pemilihan';
+    protected $table = 'pemilihan_hima';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'nama_program_studi','himpunan_prodi'
+        'paslon_hima_suara'
     ];
 
     /**
@@ -27,9 +27,4 @@ class ProgramStudi extends Model
     protected $hidden = [
         
     ];
-
-    public function hima()
-    {
-        return $this->belongsTo('App\Himpunan','himpunan_prodi');
-    }
 }

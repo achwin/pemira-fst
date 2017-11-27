@@ -8,7 +8,6 @@ use Auth;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use App\User;
-use App\Pemilihan;
 use Illuminate\Support\Facades\Redirect;
 use Session;
 
@@ -58,8 +57,7 @@ class LoginController extends Controller
             if (Auth::attempt($credentials, $request->has('remember')))
             {
                 Auth::login($user,true);
-                $check = Pemilihan::where('id_pemilih',Auth::user()->id_user)->first();
-                if (is_null($check)) {
+                if (Auth::user()->pernah_milih == 0) {
                     return redirect::to('/');
                 }
                 else
