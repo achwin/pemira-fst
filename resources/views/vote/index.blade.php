@@ -34,7 +34,7 @@
                         </div>
     @endif
  <form id="example-basic" method="post" class="form-horizontal" action="{{ url('/vote') }}">
-    <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
     @if($user->prodi_user != 6 && $user->prodi_user != 2)
     <input type="hidden" name="type" value="hima">
     <h3>{{$user->prodi->hima->nama_himpunan}}</h3>
@@ -271,16 +271,7 @@
         onFinished: function (event, currentIndex)
         {
 
-           //  $test = $('#radioBtn.himaki').val();
-
-           // //$test = $('input[#radioBtn.himaki]:checked', '#example-basic');
-           //  //$test = $("input[id=radioBtn].himaki:checked").val();
-           //  console.log($test);
-
            var form = $(this);
-
-            // // Submit form input
-
             form.submit();
         }
 

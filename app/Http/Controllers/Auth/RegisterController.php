@@ -58,10 +58,12 @@ class RegisterController extends Controller
 
         $angkatan = Angkatan::all();
         $program_studi = ProgramStudi::all();
-
+        $pernah_milih = User::where('prodi_user',Auth::user()->prodi_user)->where('pernah_milih',1)->get();
         return view('register.register',
-            ['angkatan'=>$angkatan,
-                'program_studi'=>$program_studi
+            [
+              'angkatan'      => $angkatan,
+              'program_studi' => $program_studi,
+              'pernah_milih'   => $pernah_milih
             ]
             );
     }
