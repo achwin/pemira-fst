@@ -15,6 +15,8 @@
     <script src="assets/js/jquery-3.2.1.min.js"></script>
     <script src="assets/js/tether.js"></script>
     <script src="assets/js/app.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.5/sweetalert2.all.js"></script>
+    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.5/sweetalert2.min.css">
     <style>
     #linestrike {
         margin-top: 10px;
@@ -116,6 +118,9 @@
                     </div>
                 </form>
                 <a href="{{url('logout')}}" class="btn btn-danger-outline btn-lg btn-block">Logout</a>
+
+                <button id="btn-cleardb" class="btn btn-warning-outline btn-lg btn-block" type="button">Clear Database</button>
+                <!-- <a href="{{url('clear_db')}}" class="btn btn-warning-outline btn-lg btn-block">Clear Database</a> -->
             </div>
 
             <div class="col-lg-7">
@@ -138,6 +143,45 @@
        $('#button-contact-person').slideToggle();
        $('#contact-person').slideToggle();
    }
+
+
+
+   $('#btn-cleardb').click(function() {
+ swal({
+  title: 'Apakah Anda yakin ingin membersihkan Database?',
+  text: "Ingat!Data akan terhapus selamanya!",
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Submit',
+  showLoaderOnConfirm: true,
+  preConfirm: function () {
+                return new Promise(function (resolve, reject) {
+                    $.ajax({
+                        type:'GET',
+                        url:'/clean_db',
+                         success: function(response) {
+                              resolve(response)
+                         },
+                         error: function(a, b, c){
+                              reject("error message")
+                         }
+                    })
+                })
+              },
+  allowOutsideClick: false
+}).then((result) => {
+  if (result.value) {
+    swal({
+      type: 'success',
+      title: 'Sukses!',
+      html: 'Database berhasil dibersihkan'
+    })
+  }
+})
+});
+
 </script>
 </body>
 </html>
+
+    

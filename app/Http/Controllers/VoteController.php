@@ -51,7 +51,6 @@ class VoteController extends Controller{
         if ( $v->fails() ) {
             return redirect()->back()->withErrors($v->errors())->withInput();
         }
-        dd('weq');
     	PemilihanHima::where('id_pemilihan', $request->input('id_pemilihan'))->increment('paslon_hima_suara');
         PemilihanBem::where('id_pemilihan_bem', $request->input('id_pemilihan_bem'))->increment('paslon_bem_suara');
         PemilihanDlm::where('id_pemilihan_dlm', $request->input('id_pemilihan_dlm'))->increment('calon_dlm_suara');

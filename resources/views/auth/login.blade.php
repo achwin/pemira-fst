@@ -14,6 +14,8 @@
     <script src="assets/js/jquery-3.2.1.min.js"></script>
     <script src="assets/js/tether.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.5/sweetalert2.all.js"></script>
+    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.5/sweetalert2.min.css">
     <style>
     #linestrike {
         margin-top: 10px;
@@ -58,6 +60,21 @@
                         </h2>
                         <br>
                     </header>
+
+                    @if(Session()->has('sudah_voting'))
+
+                    <script>
+
+                    swal(
+                        'Terima Kasih!',
+                         'Anda telah berpartisipasi dalam PEMIRA FST 2017!',
+                        'success'
+                    )
+                     
+                       
+                    </script>
+
+                    @endif
 
                     <div class="alert alert-success">
                         <p>Silahkan login menggunakan NIM dan password yang telah diberikan panitia.</p>
@@ -110,10 +127,31 @@
 </div>
 
 <script type="text/javascript">
+
+
    function slideContact() {
        $('#button-contact-person').slideToggle();
        $('#contact-person').slideToggle();
    }
 </script>
+
+<!-- Modal -->
+  <div class="modal fade" id="sudah_voting" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Pemira FST 2017</h4>
+        </div>
+        <div class="modal-body">
+          <p>Terima Kasih Sudah Berpartisipasi Dalam Pemira FST 2017</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
