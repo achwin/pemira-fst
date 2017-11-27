@@ -11,6 +11,10 @@ use App\PemilihanHima;
 use App\PemilihanBem;
 use App\PemilihanDlm;
 use App\PemilihanBlm;
+use App\DetailPemilihanBem;
+use Ap\DetailPemilihanBlm;
+use App\DetailPemilihanDlm;
+use App\DetailPemilihanHima;
 use App\User;
 use Session;
 
@@ -46,14 +50,60 @@ class VoteController extends Controller{
 
     public function vote(Request $request)
     {
-    	PemilihanHima::where('id_pemilihan', $request->input('id_pemilihan'))->increment('paslon_hima_suara');
+
+        DB::beginTransaction();
+
+try {
+   PemilihanHima::where('id_pemilihan', $request->input('id_pemilihan'))->increment('paslon_hima_suara');
         PemilihanBem::where('id_pemilihan_bem', $request->input('id_pemilihan_bem'))->increment('paslon_bem_suara');
         PemilihanDlm::where('id_pemilihan_dlm', $request->input('id_pemilihan_dlm'))->increment('calon_dlm_suara');
         User::where('id_user',Auth::user()->id_user)->update(['pernah_milih' => 1]);
 
+        $id_hima = $request->input('id_pemilihan');
+
+        $id_bem = $request->input('id_pemilihan_bem');
+
+        $id_dlm = $request->input('id_pemilihan_dlm');
+
+
+
+        $id_user = Auth::user()->id_user;
+
+        $detailPemilihanBem = new DetailPemilihanBem;
+
+        $detailPemilihanDlm = new DetailPemilihanDlm;
+
+        $detailPemilihanHima = new DetailPemilihanHima;
+
+
+        $detailPemilihanBem->detail_pemilihan_bem_user = $id_user;
+        $detailPemilihanBem->detail_pemilihan_bem_id_fk = $id_bem;
+
+        $detailPemilihanDlm->detail_pemilihan_dlm_user = $id_user;
+        $detailPemilihanDlm->detail_pemilihan_dlm_id_fk = $id_dlm;
+
+        $detailPemilihanHima->detail_pemilihan_hima_user = $id_user;
+        $detailPemilihanHima->detail_pemilihan_hima_id_fk = $id_hima;
+
+        $detailPemilihanBem->save();
+        $detailPemilihanDlm->save();
+        $detailPemilihanHima->save();
+
+
+
         //return redirect()->to('/logout')->with('sudah_voting', 'Terima kasih sudah memilih dalam PEMIRA FST 2017');
                              
-        return Redirect::to('/logout');
+       
+    DB::commit();
+    // all good
+
+     return Redirect::to('/logout');
+     
+} catch (\Exception $e) {
+    DB::rollback();
+    // something went wrong
+}
+    	
 
 
     }

@@ -50,11 +50,11 @@ class CleanDbController extends Controller
     public function index()
     {
 
-    DB::statement("SET foreign_key_checks=0");
+   // DB::statement("SET foreign_key_checks=0");
       //User::truncate();
       DB::table('user')->where('is_admin', '!=', 1)->delete();
 
-      DB::statement("SET foreign_key_checks=1");
+     // DB::statement("SET foreign_key_checks=1");
 
       DB::table('pemilihan_bem')
             ->update(['paslon_bem_suara' => 0]);
@@ -62,8 +62,8 @@ class CleanDbController extends Controller
       DB::table('pemilihan_blm')
             ->update(['calon_blm_suara' => 0]);
 
-      DB::table('pemilihan_dlm')
-            ->update(['calon_dlm_suara' => 0]);
+      // DB::table('pemilihan_dlm')
+      //       ->update(['calon_dlm_suara' => 0]);
 
       DB::table('pemilihan_hima')
             ->update(['paslon_hima_suara' => 0]);
