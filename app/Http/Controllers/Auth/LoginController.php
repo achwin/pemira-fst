@@ -58,6 +58,8 @@ class LoginController extends Controller
             {
                 Auth::login($user,true);
                 if (Auth::user()->pernah_milih == 0) {
+
+
                     return redirect::to('/');
                 }
                 else
@@ -74,6 +76,15 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
+
+        $who_logged_in = session('who_logged_in');
+
+        if($who_logged_in=="user"){
+             Session::flash('sudah_voting','Terima kasih sudah memilih dalam PEMIRA FST 2017');
+        }
+
+       
+
         return redirect('/login');
     }
 }

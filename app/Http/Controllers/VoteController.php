@@ -12,6 +12,7 @@ use App\PemilihanBem;
 use App\PemilihanDlm;
 use App\PemilihanBlm;
 use App\User;
+use Session;
 
 class VoteController extends Controller{
 
@@ -23,8 +24,11 @@ class VoteController extends Controller{
     public function index(){
        $user = Auth::user(); 
        if (Auth::user()->is_admin == 1) {
+        session(['who_logged_in'=>'admin']);
             return redirect::to('/register');
         }           							   
+
+        session(['who_logged_in'=>'user']);
 
         $data = [
             'user' => $user,
@@ -46,6 +50,9 @@ class VoteController extends Controller{
         PemilihanBem::where('id_pemilihan_bem', $request->input('id_pemilihan_bem'))->increment('paslon_bem_suara');
         PemilihanDlm::where('id_pemilihan_dlm', $request->input('id_pemilihan_dlm'))->increment('calon_dlm_suara');
         User::where('id_user',Auth::user()->id_user)->update(['pernah_milih' => 1]);
+
+        //return redirect()->to('/logout')->with('sudah_voting', 'Terima kasih sudah memilih dalam PEMIRA FST 2017');
+                             
         return Redirect::to('/logout');
 
 

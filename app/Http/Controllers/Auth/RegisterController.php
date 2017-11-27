@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
+use Session;
 
 class RegisterController extends Controller
 {
@@ -52,6 +53,9 @@ class RegisterController extends Controller
           Auth::logout();
           return redirect::to('/');
         }
+
+        session(['who_logged_in'=>'admin']);
+
         $angkatan = Angkatan::all();
         $program_studi = ProgramStudi::all();
 
