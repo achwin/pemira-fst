@@ -65,11 +65,16 @@
 
                     <script>
 
-                    swal(
+                   
+
+                   $( document ).ready(function() {
+                          swal(
                         'Terima Kasih!',
                          'Anda telah berpartisipasi dalam PEMIRA FST 2017!',
                         'success'
                     )
+                     
+                    });
                      
                        
                     </script>
@@ -152,6 +157,10 @@
       </div>
     </div>
   </div>
+
+  <script>
+       
+  </script>
 
 </body>
 </html>
