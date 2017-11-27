@@ -95,7 +95,7 @@
             </div>
 
             <div class="col-lg-7">
-                <img src="http://kimia.fst.unair.ac.id/wp-content/uploads/2017/04/cover-e1491976042604.jpg" alt="" style="margin-top:120px; height: 500px; width: 800px;">
+                <img src="{{asset('assets/images/cover.jpg')}}" alt="" style="margin-top:120px; height: 500px; width: 800px;">
             </div>
         </div>
     </div>

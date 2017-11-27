@@ -103,6 +103,15 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'id_pemilihan' => [
+            'required_if' => 'Anda belum memilih calon ketua dan wakil ketua Hima',
+        ],
+        'id_pemilihan_bem' => [
+            'required' => 'Anda belum memilih calon ketua dan wakil ketua BEM',
+        ],
+        'id_pemilihan_dlm' => [
+            'required' => 'Anda belum memilih calon DLM',
+        ],
     ],
 
     /*

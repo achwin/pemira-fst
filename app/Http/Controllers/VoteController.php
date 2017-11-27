@@ -12,6 +12,7 @@ use App\PemilihanBem;
 use App\PemilihanDlm;
 use App\PemilihanBlm;
 use App\User;
+use Validator;
 
 class VoteController extends Controller{
 
@@ -42,12 +43,19 @@ class VoteController extends Controller{
 
     public function vote(Request $request)
     {
+        $v = \Validator::make($request->all(), [    
+            'id_pemilihan'         => 'required _if:type,hima',
+            'id_pemilihan_bem'     => 'required',
+            'id_pemilihan_dlm'     => 'required',
+            ]);
+        if ( $v->fails() ) {
+            return redirect()->back()->withErrors($v->errors())->withInput();
+        }
+        dd('weq');
     	PemilihanHima::where('id_pemilihan', $request->input('id_pemilihan'))->increment('paslon_hima_suara');
         PemilihanBem::where('id_pemilihan_bem', $request->input('id_pemilihan_bem'))->increment('paslon_bem_suara');
         PemilihanDlm::where('id_pemilihan_dlm', $request->input('id_pemilihan_dlm'))->increment('calon_dlm_suara');
         User::where('id_user',Auth::user()->id_user)->update(['pernah_milih' => 1]);
         return Redirect::to('/logout');
-
-
     }
 }
