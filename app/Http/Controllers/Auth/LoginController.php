@@ -59,6 +59,7 @@ class LoginController extends Controller
                 Auth::login($user,true);
                 if (Auth::user()->pernah_milih == 0) {
 
+                    session(['who_logged_in'=>'user']);
 
                     return redirect::to('/');
                 }

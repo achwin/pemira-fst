@@ -26,6 +26,10 @@ Route::group(['middleware' => ['auth']], function () {
 		'as'   => 'index.vote',
 		'uses' => 'VoteController@index']);
 
+	Route::get('/clean_db', [
+		'as'   => 'cleandb',
+		'uses' => 'Auth\CleanDbController@index']);
+
 	Route::get('/logout', [
 		'as'   => 'logout',
 		'uses' => 'Auth\LoginController@logout']);
