@@ -123,7 +123,7 @@
 </div>
 
 <div id="contact-person" style="z-index: 1000; display:none; position: fixed; bottom: 0; right: 50px; padding: 10px; text-align: center;background-color: #5bc0de;">
-   <label style="color: #ffffff;">Hilmi (WA : 083830557123 / Line : falachudin)</label><a onclick="slideContact();" style="margin-left:10px; color:#ffffff;" href="#"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+   <label style="color: #ffffff;">Hilmi (WA : 083830557123 / Line : falachudin)<br>Kenny ( 082339081041/ Line : kennykarnama)</label><a onclick="slideContact();" style="margin-left:10px; color:#ffffff;" href="#"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
 </div>
 
 <script type="text/javascript">

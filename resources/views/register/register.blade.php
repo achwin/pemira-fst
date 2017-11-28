@@ -123,8 +123,24 @@
                 <!-- <a href="{{url('clear_db')}}" class="btn btn-warning-outline btn-lg btn-block">Clear Database</a> -->
             </div>
 
-            <div class="col-lg-7">
-                <img src="http://kimia.fst.unair.ac.id/wp-content/uploads/2017/04/cover-e1491976042604.jpg" alt="" style="margin-top:120px; height: 500px; width: 800px;">
+            <div class="col-lg-7" style="margin-top: 130px;margin-left: 20px;">
+              <h2 style="margin-bottom: 20px;">List Pemilih</h2>
+                <table class="table table-striped table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th style="width: 10%">No.</th>
+                      <th style="width: 70%; text-align: center;">NIM</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach($pernah_milih as $i => $pm)
+                      <tr>
+                        <td>{{$i+1}}</td>
+                        <td style="text-align: center;">{{$pm->nim_user}}</td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -135,7 +151,7 @@
 </div>
 
 <div id="contact-person" style="z-index: 1000; display:none; position: fixed; bottom: 0; right: 50px; padding: 10px; text-align: center;background-color: #5bc0de;">
-   <label style="color: #ffffff;">Hilmi (WA : 083830557123 / Line : falachudin)</label><a onclick="slideContact();" style="margin-left:10px; color:#ffffff;" href="#"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+   <label style="color: #ffffff;">Hilmi (WA : 083830557123 / Line : falachudin)<br>Kenny ( 082339081041/ Line : kennykarnama)</label><a onclick="slideContact();" style="margin-left:10px; color:#ffffff;" href="#"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
 </div>
 
 <script type="text/javascript">
@@ -183,5 +199,3 @@
 </script>
 </body>
 </html>
-
-    

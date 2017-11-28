@@ -62,8 +62,6 @@ class CleanDbController extends Controller
       DB::table('pemilihan_dlm')
             ->update(['calon_dlm_suara' => 0]);
 
-    
-
       DB::table('pemilihan_hima')
             ->update(['paslon_hima_suara' => 0]);
 
@@ -71,9 +69,5 @@ class CleanDbController extends Controller
       return response()->json([
         'status_cleardb'=>'sukses'
       ]);
-
-  
-      
-
     }
 }
