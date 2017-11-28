@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="assets/css/tether.min.css">
     <link rel="stylesheet" href="assets/lib/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/sweetalert.css">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="base-url" content="{{ url('') }}" />
     
     <script src="assets/js/jquery-3.2.1.min.js"></script>
     <script src="assets/js/tether.js"></script>
     <script src="assets/js/app.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.5/sweetalert2.all.js"></script>
-    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.5/sweetalert2.min.css">
+    <script src="assets/js/sweetalert.js"></script>
     <style>
     #linestrike {
         margin-top: 10px;
